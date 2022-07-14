@@ -8,7 +8,7 @@ show_menu(){
     printf "\n${menu}*********************************************${normal}\n"
     printf "${menu}*-${number} 1)${menu} Start Apache ${normal}\n"
     printf "${menu}*-${number} 2)${menu} Restart Apache ${normal}\n"
-    printf "${menu}*-${number} 3)${menu} Stop Apche ${normal}\n"
+    printf "${menu}*-${number} 3)${menu} Stop Apache ${normal}\n"
     printf "${menu}*********************************************${normal}\n"
     printf "Ingrese una opción de menú o ingrese ${fgred}x para salir. ${normal}"
     read opt
@@ -33,6 +33,8 @@ while [ $opt != '' ]
             option_picked "Opción 1 elegida";
             printf "sudo service apache2 start.. \n";
 	    sudo /opt/lampp/lampp start
+      sudo firewall-cmd --add-service=http
+      sudo firewall-cmd --add-service=https
             show_menu;
         ;;
         2) clear;
